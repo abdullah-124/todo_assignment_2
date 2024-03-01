@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body  %}
+<section class="text-center">
+    {% if todos %}
+        <h5 class="fw-bold">Completed Task</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for todo in todos %}
+            <tr>
+                <th scope="row">{{todo.id}}</th>
+                <td>{{todo.task_title}}</td>
+                <td>{{todo.taskDescription}}</td>
+                <td>
+                    {% if todo.is_completed %} <input type="checkbox" checked>
+                    {% else %} <input type="checkbox">
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete' pk=todo.id %}">Delete </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No task to show</p>
+    {% endif %}
+</section>
+{% endblock body  %}

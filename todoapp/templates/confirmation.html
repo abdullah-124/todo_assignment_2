@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body  %}
+    <form class="text-center" action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <h6>Are you sure you want to delete</h6>
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+{% endblock body  %}
